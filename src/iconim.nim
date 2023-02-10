@@ -75,6 +75,8 @@ proc icon*(key: string, libName = ""): SVGIcon =
     if Icon.libs.hasKey(libName):
       if Icon.libs[libName].icons.hasKey(key):
         result = Icon.libs[libName].icons[key]
+        if result.code.len == 0:
+          result.readSvgCode(Icon.stripTags)
 
 proc size*(svg: SVGIcon, s: int): SVGIcon =
   svg.attrs["width"] = $s
@@ -82,4 +84,6 @@ proc size*(svg: SVGIcon, s: int): SVGIcon =
   result = svg
 
 proc `$`*(svg: SVGIcon): string =
-  result = "<svg" & indent(svg.getAttrs(), 1) & ">" & svg.code & "</svg>"
+  if svg != nil:
+    result = "<svg" & indent(svg.getAttrs(), 1) & ">" & svg.code & "</svg>"
+  else: discard
