@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://github.com/openpeep/iconim/blob/main/.github/logo.png" width="64px"><br>
-  SVG Icon library manager for server-side rendering.<br>👑 Written in Nim language
+  🎁 SVG Icon library manager for server-side rendering.<br>👑 Written in Nim language
 </p>
 
 <p align="center">
@@ -13,20 +13,28 @@
 </p>
 
 ## 😍 Key Features
-- [x] Manage multiple libraries
+- [x] Manage multiple SVG libraries
+- [x] Auto-discover libraries
+- [x] Change `XMLAttributes` on the fly
 - [x] Open Source | `MIT` License
-- [x] Written in Nim language
+- [x] Written in 👑 Nim language
 
 ## Examples
+In this example we'll use [Feather Icons](https://feathericons.com/)
+
 ```nim
 # initialize
 init("../examples", default = "feather", stripTags = @["class"])
 
 # render icons
 echo icon("activity")
+# once rendered, we'll be stored in a hash table.
 
-echo icon("calendar")
+# change size on the fly
+echo icon("calendar").size(48)
 ```
+
+`TODO` handle custom `XMLAttributes`
 
 ### ❤ Contributions & Support
 - 🐛 Found a bug? [Create a new Issue](https://github.com/openpeep/iconim/issues)
