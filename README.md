@@ -1,18 +1,19 @@
 <p align="center">
-  <img src="https://github.com/openpeep/PKG/blob/main/.github/logo.png" width="90px"><br>
-  OpenPeep's repository template for developing libraries,<br>projects and other cool things. 👑 Written in Nim language
+  <img src="https://github.com/openpeep/iconim/blob/main/.github/logo.png" width="64px"><br>
+  Icon library manager for server-side rendering. 👑 Written in Nim language
 </p>
 
 <p align="center">
-  <code>nimble install {PKG}</code>
+  <code>nimble install iconim</code>
 </p>
 
 <p align="center">
-  <a href="https://github.com/">API reference</a><br>
-  <img src="https://github.com/openpeep/pistachio/workflows/test/badge.svg" alt="Github Actions">  <img src="https://github.com/openpeep/pistachio/workflows/docs/badge.svg" alt="Github Actions">
+  <a href="https://openpeep.github.io/iconim">API reference</a><br>
+  <img src="https://github.com/openpeep/iconim/workflows/test/badge.svg" alt="Github Actions">  <img src="https://github.com/openpeep/iconim/workflows/docs/badge.svg" alt="Github Actions">
 </p>
 
 ## 😍 Key Features
+- [x] Manage multiple libraries
 - [x] Open Source | `MIT` License
 - [x] Written in Nim language
 
@@ -20,11 +21,11 @@
 ...
 
 ### ❤ Contributions & Support
-- 🐛 Found a bug? [Create a new Issue](/issues)
-- 👋 Wanna help? [Fork it!](/fork)
+- 🐛 Found a bug? [Create a new Issue](https://github.com/openpeep/iconim/issues)
+- 👋 Wanna help? [Fork it!](https://github.com/openpeep/iconim/fork)
 - 😎 [Get €20 in cloud credits from Hetzner](https://hetzner.cloud/?ref=Hm0mYGM9NxZ4)
 - 🥰 [Donate via PayPal address](https://www.paypal.com/donate/?hosted_button_id=RJK3ZTDWPL55C)
 
 ### 🎩 License
-{PKG} | MIT license. [Made by Humans from OpenPeep](https://github.com/openpeep).<br>
+Iconim | MIT license. [Made by Humans from OpenPeep](https://github.com/openpeep).<br>
 Copyright &copy; 2023 OpenPeep & Contributors &mdash; All rights reserved.
