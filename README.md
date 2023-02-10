@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://github.com/openpeep/iconim/blob/main/.github/logo.png" width="64px"><br>
-  Icon library manager for server-side rendering. 👑 Written in Nim language
+  Icon library manager for server-side rendering.<br>👑 Written in Nim language
 </p>
 
 <p align="center">
@@ -18,7 +18,15 @@
 - [x] Written in Nim language
 
 ## Examples
-...
+```nim
+# initialize
+init("../examples", default = "feather", stripTags = @["class"])
+
+# render icons
+echo icon("activity")
+
+echo icon("calendar")
+```
 
 ### ❤ Contributions & Support
 - 🐛 Found a bug? [Create a new Issue](https://github.com/openpeep/iconim/issues)
