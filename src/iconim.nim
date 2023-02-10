@@ -83,9 +83,3 @@ proc size*(svg: SVGIcon, s: int): SVGIcon =
 
 proc `$`*(svg: SVGIcon): string =
   result = "<svg" & indent(svg.getAttrs(), 1) & ">" & svg.code & "</svg>"
-
-when isMainModule:
-  init("../examples", "feather", stripTags = @["class"])
-  echo icon("alert-triangle")
-  echo icon("activity")
-  echo icon("alert-triangle")
