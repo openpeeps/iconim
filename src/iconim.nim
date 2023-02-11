@@ -30,9 +30,10 @@ type
     stripAttrs: seq[string]
       ## Optionally, pass attr names that need to be removed (e.g. `class`)
 
-var Icon* = IconManager() # a singleton of IconManager
+var Icon*: IconManager # a singleton of IconManager
 
-proc init*(source: string, default = "", stripAttrs = newSeq[string]()) =
+proc init*(icon: var IconManager, source: string, default = "", stripAttrs = newSeq[string]()) =
+  Icon = IconManager()
   var i = 0
   let src = absolutePath(normalizedPath(source))
   Icon.source = src
