@@ -27,12 +27,12 @@ type
       ## Default library name
     libs: libsTable
       ## A Table containing scanned libraries
-    stripTags: seq[string]
-      ## Optionally, pass tag names that need to be removed (e.g. `class`)
+    stripAttrs: seq[string]
+      ## Optionally, pass attr names that need to be removed (e.g. `class`)
 
 var Icon* = IconManager() # a singleton of IconManager
 
-proc init*(source: string, default = "", stripTags = newSeq[string]()) =
+proc init*(source: string, default = "", stripAttrs = newSeq[string]()) =
   var i = 0
   let src = absolutePath(normalizedPath(source))
   Icon.source = src
@@ -47,13 +47,13 @@ proc init*(source: string, default = "", stripTags = newSeq[string]()) =
       let iconName = extractFileName(iconPath)[0 .. ^5]
       lib.icons[iconName] = SVGIcon(path: iconPath)
     Icon.libs[libName] = lib
-    Icon.stripTags = stripTags
+    Icon.stripAttrs = stripAttrs
 
-proc readSvgCode(svg: SVGIcon, stripTags: seq[string]) =
+proc readSvgCode(svg: SVGIcon, stripAttrs: seq[string]) =
   var xml = parseXml readFile(svg.path)
   xml.attrs.del("xmlns") # useless tag
-  for tag in stripTags:
-    xml.attrs.del(tag)
+  for attr in stripAttrs:
+    xml.attrs.del(attr)
   svg.attrs = xml.attrs
   for xNode in xml:
     add svg.code, xNode
@@ -70,13 +70,13 @@ proc icon*(key: string, libName = ""): SVGIcon =
     if Icon.libs[d].icons.hasKey(key):
       result = Icon.libs[d].icons[key]
       if result.code.len == 0:
-        result.readSvgCode(Icon.stripTags)
+        result.readSvgCode(Icon.stripAttrs)
   else:
     if Icon.libs.hasKey(libName):
       if Icon.libs[libName].icons.hasKey(key):
         result = Icon.libs[libName].icons[key]
         if result.code.len == 0:
-          result.readSvgCode(Icon.stripTags)
+          result.readSvgCode(Icon.stripAttrs)
 
 proc size*(svg: SVGIcon, s: int): SVGIcon =
   svg.attrs["width"] = $s

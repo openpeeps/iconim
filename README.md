@@ -24,7 +24,7 @@ In this example we'll use [Feather Icons](https://feathericons.com/)
 
 ```nim
 # initialize
-init("../examples", default = "feather", stripTags = @["class"])
+init("../examples", default = "feather", stripAttrs = @["class"])
 
 # render icons
 echo icon("activity")
