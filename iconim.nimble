@@ -2,7 +2,7 @@
 
 version       = "0.1.0"
 author        = "George Lemon"
-description   = "Icon library manager for server-side rendering"
+description   = "SVG icon library manager for server-side rendering"
 license       = "MIT"
 srcDir        = "src"
 skipDirs      = @["examples"]

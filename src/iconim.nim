@@ -1,4 +1,4 @@
-# Icon library manager for server-side rendering
+# SVG Icon library manager for server-side rendering
 # 
 # (c) 2023 George Lemon | MIT License
 #          Made by Humans from OpenPeep

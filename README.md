@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://github.com/openpeep/iconim/blob/main/.github/logo.png" width="64px"><br>
-  🎁 SVG Icon library manager for server-side rendering.<br>👑 Written in Nim language
+  🎁 SVG icon library manager for server-side rendering.<br>👑 Written in Nim language
 </p>
 
 <p align="center">
