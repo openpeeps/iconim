@@ -80,6 +80,7 @@ proc icon*(key: string, libName = ""): SVGIcon =
           result.readSvgCode(Icon.stripAttrs)
 
 proc size*(svg: SVGIcon, s: int): SVGIcon =
+  ## Change `width` and `height` attributes
   svg.attrs["width"] = $s
   svg.attrs["height"] = $s
   result = svg
@@ -88,3 +89,24 @@ proc `$`*(svg: SVGIcon): string =
   if svg != nil:
     result = "<svg" & indent(svg.getAttrs(), 1) & ">" & svg.code & "</svg>"
   else: discard
+
+proc getPath*(svg: SVGIcon): string =
+  ## Get the absolute of given SVGIcon
+  result = svg.path
+
+iterator items*(icon: var IconManager, libName = ""): SVGIcon =
+  ## Iterate given library. This may be useful if you 
+  ## want to create a grid view with available icons. 
+  var lib = libName
+  if lib.len == 0:
+    lib = icon.default
+  for k, ico in icon.libs[lib].icons.pairs:
+    yield ico
+
+# iterator pairs*(icon: var IconManager, libName = ""): Library =
+#   ## Iterate for available libraries.
+#   var lib = libName
+#   if lib.len == 0:
+#     lib = icon.default
+#   for k, l in icon.libs.pairs:
+#     yield l
