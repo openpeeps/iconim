@@ -9,7 +9,7 @@ from std/strutils import indent, join
 
 type
   SVGIcon = ref object
-    path, head, code: string
+    path, code: string
     attrs: XmlAttributes
 
   Library = ref object
