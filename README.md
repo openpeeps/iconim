@@ -28,7 +28,7 @@ init("../examples", default = "feather", stripAttrs = @["class"])
 
 # render icons
 echo icon("activity")
-# once rendered, we'll be stored in a hash table.
+# once rendered, will be stored in a hash table.
 
 # change size on the fly
 echo icon("calendar").size(48)
