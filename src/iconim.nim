@@ -4,7 +4,7 @@
 #          Made by Humans from OpenPeep
 #          https://github.com/openpeep/iconim
 
-import std/[os, tables, strtabs, xmltree, xmlparser]
+import std/[os, tables, strtabs, xmltree, xmlparser, json]
 from std/strutils import indent, join
 
 type
@@ -32,7 +32,7 @@ type
 
 var Icon*: IconManager # a singleton of IconManager
 
-proc init*(icon: var IconManager, source: string, default = "", stripAttrs = newSeq[string]()) =
+proc initSingleton(source, default: string) =
   Icon = IconManager()
   var i = 0
   let src = absolutePath(normalizedPath(source))
@@ -48,7 +48,18 @@ proc init*(icon: var IconManager, source: string, default = "", stripAttrs = new
       let iconName = extractFileName(iconPath)[0 .. ^5]
       lib.icons[iconName] = SVGIcon(path: iconPath)
     Icon.libs[libName] = lib
-    Icon.stripAttrs = stripAttrs
+
+proc init*(icon: var IconManager, source: string, default = "", stripAttrs = newSeq[string]()) =
+  ## Initialize a singleton of `IconManager`
+  initSingleton(source, default)
+  Icon.stripAttrs = stripAttrs
+
+proc init*(icon: var IconManager, source: string, default = "", stripAttrs: JsonNode = %*[]) =
+  ## Initialize a singleton of `IconManager`. This is a special proc compatible
+  ## with [Tim Engine](https://github.com/openpeep/tim)
+  initSingleton(source, default)
+  for attr in stripAttrs:
+    Icon.stripAttrs.add(attr.getStr)
 
 proc readSvgCode(svg: SVGIcon, stripAttrs: seq[string]) =
   var xml = parseXml readFile(svg.path)
