@@ -35,7 +35,7 @@ var Icon*: IconManager # a singleton of IconManager
 proc initSingleton(source, default: string) =
   Icon = IconManager()
   var i = 0
-  let src = absolutePath(normalizedPath(source))
+  let src = source
   Icon.source = src
   Icon.libs = libsTable()
   for libDir in walkDir(src):
