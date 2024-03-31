@@ -7,10 +7,12 @@
 import std/[os, tables, strtabs, xmltree, xmlparser, json]
 from std/strutils import indent, join
 
+export XmlAttributes
+
 type
   SVGIcon = ref object
     path, code: string
-    attrs: XmlAttributes
+    attrs*: XmlAttributes
 
   Library = ref object
     name: string
@@ -94,6 +96,11 @@ proc size*(svg: SVGIcon, s: int): SVGIcon =
   ## Change `width` and `height` attributes
   svg.attrs["width"] = $s
   svg.attrs["height"] = $s
+  result = svg
+
+proc strokeWidth*(svg: SVGIcon, i: int): SVGIcon =
+  ## Change `stroke-width` attribute value
+  svg.attrs["stroke-width"] = $i
   result = svg
 
 proc `$`*(svg: SVGIcon): string =
